@@ -29,12 +29,12 @@ theta_reg = theta
 theta_reg(1) = 0
 J = -1 / m * (log(z)' * y + log(1 - z)' * (1 - y)) + lambda / (2 * m) * theta_reg' * theta_reg 
 
-grad(1) = 1 / m * (z - y)' * X(:, 1)
+% grad(1) = 1 / m * (z - y)' * X(:, 1)
+% for i = 2:n
+%  grad(i) = 1 / m * (z - y)' * X(:, i) + lambda / m * theta_reg(i)
+% end
 
-for i = 2:n
-  grad(i) = 1 / m * (z - y)' * X(:, i) + lambda / m * theta_reg(i)
-end
-
+grad = 1 / m * X' * (z - y) + lambda / m * theta_reg
 
 
 % =============================================================
