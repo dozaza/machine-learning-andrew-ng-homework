@@ -95,12 +95,12 @@ D2 = zeros(size(Theta2));
 
 for i = 1:m,
   a1_i = a1(i, :);
-  z1_i = z1(i, :);
+  z2_i = z2(i, :);
   a2_i = a2(i, :);
   prob_i = prob(i, :);
   y_i = Y(i, :);
   delta3 = prob_i - y_i;   % delta3 = a3 - y for output
-  delta2 = Theta2' * delta3' .* sigmoidGradient([1; z1_i]);
+  delta2 = Theta2' * delta3' .* sigmoidGradient([1; z2_i']);
   
   D2 = D2 + delta3' * a2_i;
   D1 = D1 + delta2(2:hidden_layer_size + 1) * a1_i;
